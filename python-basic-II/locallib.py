@@ -23,13 +23,13 @@ def factorial(x):
     return x * factorial(x - 1)
 
 
-def issavedin(the_list, word):
+def issavedin(the_list, x):
     """
         This function determines if a word is savved in a
         dictionnary
     Args:
         dict: a list of words
-        word: a word
+        x: a word, or a number
     Returns:
         Return True of False
     """
@@ -37,7 +37,7 @@ def issavedin(the_list, word):
         return False
 
     for i in the_list:
-        if (i == word):
+        if (i == x):
             return True
     return False
 
@@ -63,3 +63,43 @@ def string_anagram(basicset):
             stringslist[len(stringslist)] = ''.join(basicset)
 
     return stringslist
+
+
+def removealloccurences(the_list, x):
+    """
+        This function removes all the elements in a list
+    Args:
+        the_list: the list of element
+        x: the element to remove
+    Returns:
+        Nothing
+    """
+    while x in the_list:
+        the_list.remove(x)
+
+
+def findnumbercombination(the_list, x):
+    """
+        This function takes a list, and find all the combination
+        of two elements that could cancel the digit x
+    Args:
+        the_list: the list of element
+        x: the element to remove
+    Returns:
+        A dictionnary with all the combination that of two elements
+        that could cancel the number x
+    """
+
+    dictofcombinations = []
+
+    for i in range(len(the_list)):
+       # print("L'index : {:d}".format(x))
+        for j in range(i + 1, len(the_list)):
+            #print(f"NOus avons : {i} + {j}")
+           # print(f"NOus avons : {the_list[i]} + {the_list[j]} + {x} =\
+            #        {the_list[i] + the_list[j]}")
+            if  (the_list[i] + the_list[j] + x) == 0:
+               # print(f"NOus avons : {the_list[i]} + {the_list[j]} + {x} = 0")
+                dictofcombinations.append([x, the_list[i], the_list[j]])
+
+    return (dictofcombinations)
